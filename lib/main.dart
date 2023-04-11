@@ -4,6 +4,8 @@ import 'package:orecs/pages/login_page.dart';
 import 'pages/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'utils/routes.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -24,8 +26,8 @@ class MyApp extends StatelessWidget {
       initialRoute: "/Login",
       routes: {
         "/": (context) => const LoginPage(),
-        "/Login": (context) => const LoginPage(),
-        "/home": (context) => const HomePage(),
+        MyRoutes.loginroute: (context) => const LoginPage(),
+        MyRoutes.homeroute: (context) => const HomePage(),
       },
     );
   }
