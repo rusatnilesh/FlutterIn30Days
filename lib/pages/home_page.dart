@@ -1,10 +1,17 @@
+// ignore_for_file: import_of_legacy_library_into_null_safe
+
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:orecs/models/catalog.dart';
-import 'dart:convert';
+import 'package:orecs/widgets/themes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 import '../widgets/drawer.dart';
 import '../widgets/item_widget.dart';
+import '../widgets/home_widgets/catalog_header.dart';
+import '../widgets/home_widgets/catalog_list.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -38,21 +45,20 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("MyApp")),
-      body: (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
-          ? ListView.builder(
-              padding: const EdgeInsets.all(8.0),
-              itemCount: CatalogModel.items.length,
-              itemBuilder: (context, index) {
-                return ItemWidget(
-                  item: CatalogModel.items[index],
-                );
-              },
-            )
-          : const Center(
-              child: CircularProgressIndicator(),
-            ),
-      drawer: const MyDrawer(),
-    );
+        body: SafeArea(
+      child: Container(
+        padding: Vx.m32,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const CatalogHeader(),
+            if (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
+              const CatalogList().py16().expand()
+            else
+              CircularProgressIndicator().centered().expand(),
+          ],
+        ),
+      ),
+    ));
   }
 }
