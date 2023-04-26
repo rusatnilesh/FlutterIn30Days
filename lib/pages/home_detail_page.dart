@@ -29,8 +29,8 @@ class HomeDetailPage extends StatelessWidget {
                       shape: MaterialStateProperty.all(
                         StadiumBorder(),
                       )),
-                  child: "Buy".text.make())
-              .wh(100, 50)
+                  child: "Add to cart".text.make())
+              .wh(120, 50)
         ],
       ).pOnly(right: 8.0).p32(),
       body: SafeArea(
@@ -59,6 +59,11 @@ class HomeDetailPage extends StatelessWidget {
                           .xl
                           .make(),
                       10.heightBox,
+                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries"
+                          .text
+                          .textStyle(context.captionStyle)
+                          .make()
+                          .p16()
                     ],
                   )).py64(),
             ))
